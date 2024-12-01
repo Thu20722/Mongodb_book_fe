@@ -33,8 +33,10 @@ export const getDetailsUser = async (id, access_token) => {
 export const refreshToken = async () => {
   const res = await axios.post(
     `${import.meta.env.VITE_API_URL}/user/refresh-token`,
-    {},
-    { withCredentials: true } // Đảm bảo rằng cookies được gửi đi
+    {}, // Không cần gửi thêm dữ liệu trong body
+    {
+      withCredentials: true, // Quan trọng để gửi cookie
+    }
   );
   return res.data;
 };
